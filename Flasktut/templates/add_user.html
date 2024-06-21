@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add User</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Flag_of_Russia.svg/2560px-Flag_of_Russia.svg.png");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .container {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+      }
+
+      h1 {
+        color: #003366;
+        margin-bottom: 20px;
+        font-size: 24px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      label {
+        margin-bottom: 5px;
+        color: #003366;
+      }
+
+      input {
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+
+      button {
+        padding: 10px;
+        background-color: #d52b1e;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #a0201d;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Добавить пользователя</h1>
+      <form method="POST" action="/add_user">
+        <label for="login">Логин:</label>
+        <input type="text" id="login" name="login" required />
+        <br />
+        <label for="secret">Секрет:</label>
+        <input type="text" id="secret" name="secret" required />
+        <br />
+        <button type="submit">Добавить</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Methods</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 500px;
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li {
+        margin-bottom: 20px;
+        background-color: #f9f9f9;
+        padding: 10px;
+        border-radius: 4px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+      li b {
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+      }
+      button {
+        padding: 10px;
+        background-color: #28a745;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #218838;
+      }
+      a {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        color: #007bff;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Методы шифровки</h1>
+      <ul>
+        {% for method in methods %}
+        <li>
+          <b>{{ method.caption }}</b> - {{ method.description }}
+          <form
+            action="{{ url_for('encrypt_form') }}"
+            method="get"
+            style="display: inline"
+          >
+            <input type="hidden" name="method_id" value="{{ method.id }}" />
+            <button type="submit">Использовать этот метод</button>
+          </form>
+        </li>
+        {% endfor %}
+      </ul>
+      <a href="{{ url_for('home') }}">Вернуться домой</a>
+    </div>
+  </body>
+</html>
