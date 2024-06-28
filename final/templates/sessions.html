@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sessions</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 600px;
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li {
+        margin-bottom: 20px;
+        background-color: #f9f9f9;
+        padding: 10px;
+        border-radius: 4px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+      li b {
+        color: #555;
+      }
+      a {
+        display: block;
+        text-decoration: none;
+        color: #007bff;
+        padding: 10px;
+        border-radius: 4px;
+        text-align: center;
+        transition: background-color 0.3s ease;
+        margin-top: 10px;
+      }
+      a:hover {
+        background-color: #f0f0f0;
+      }
+      .back-link {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        color: #007bff;
+        text-decoration: none;
+      }
+      .back-link:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Закодированная сессия</h1>
+      <ul>
+        {% for session in sessions %}
+        <li>
+          <b>Session ID:</b> {{ session.id }} <br />
+          <b>User:</b> {{ session.user_id }} <br />
+          <b>Method:</b> {{ session.method_id }} <br />
+          <b>Data In:</b> {{ session.data_in }} <br />
+          <b>Data Out:</b> {{ session.data_out }} <br />
+          <b>Created At:</b> {{ session.created_at }} <br />
+          <a href="{{ url_for('get_session', session_id=session.id) }}"
+            >Посмотреть детали сессии</a
+          >
+        </li>
+        {% endfor %}
+      </ul>
+      <a href="{{ url_for('home') }}" class="back-link">Вернуться на главную</a>
+    </div>
+  </body>
+</html>
